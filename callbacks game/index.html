@@ -1,0 +1,37 @@
+<button id="create-tank" >Create Tank</button>
+<button id="create-infantry" >Create Infantry</button>
+<button id="create-plane" >Create Plane</button>
+<script>
+
+    document.getElementById("create-tank").addEventListener("click", function(){
+        console.log("Creating tank...")
+        createUnit("tank", 5000, (err, res) => {
+            if (err){
+                console.log("error")
+            }else{
+                console.log(res)
+            }
+        })
+    })
+
+    document.getElementById("create-infantry").addEventListener("click", function(){
+        console.log("Creating infantry...")
+        createUnit("infantry", 1000, (res) => {
+            console.log(res)
+        })
+    })
+
+    document.getElementById("create-plane").addEventListener("click", function(){
+        console.log("Creating plane...")
+        createUnit("plane", 3000, (res) => {
+            console.log(res)
+        })
+    })
+
+    function createUnit(unit, time, callback){
+        setTimeout(function(){
+            callback(`${unit} created`);
+            // error(true);
+        }, time)
+    }
+</script>
