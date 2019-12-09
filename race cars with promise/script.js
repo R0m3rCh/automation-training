@@ -1,9 +1,23 @@
-var gameScene;
-var projectile;
-var enemy;
-var wallTop;
-var deathSound;
-var gameObjects;
+var gameScene
+var projectile
+var enemy
+var wallTop
+var deathSound
+var gameObjects
+
+let car1Speed
+let car2Speed
+let car3Speed
+let scoreObj = {
+    blueCar: 0,
+    redCar: 0,
+    purpleCar: 0
+}
+let defaultScoreObj = {
+    blueCar: 0,
+    redCar: 0,
+    purpleCar: 0
+}
 
 /* Start of the game. */
 function start(){
@@ -82,18 +96,17 @@ function start(){
     gameObjects = [car1, car2, car3, finishWall];
     gameScene.context = gameScene.canvas.getContext("2d");
     gameScene.interval = setInterval(update, 10);
-    //Implement Promise.race here   
     
     Promise.race([car1.collidedWith(finishWall), car2.collidedWith(finishWall), car3.collidedWith(finishWall)])
         .then((gameObj) => {
             if(scoreObj[gameObj.name] < 2){
                 scoreObj[gameObj.name] += 1
+                console.log(scoreObj)
             } else {
                 console.log("WINNER: " + gameObj.name)
                 gameScene.stop()
-                scoreObj = restoreScore
+                scoreObj = defaultScoreObj
             }
-            console.log(scoreObj)
         })
 
     car1Speed = Math.random() * 5
@@ -101,22 +114,6 @@ function start(){
     car3Speed = Math.random() * 5
 }
 
-let car1Speed
-let car2Speed
-let car3Speed
-
-let scoreObj = {
-    blueCar: 0,
-    redCar: 0,
-    purpleCar: 0
-}
-let restoreScore = {
-    blueCar: 0,
-    redCar: 0,
-    purpleCar: 0
-}
-
-/* Update every 10 miliseconds. You don´t have to touch this, maybe if you want to increase speed randomly  */
 function update(){
     car1.x += car1Speed;
     car2.x += car2Speed;
