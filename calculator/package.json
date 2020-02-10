@@ -10,6 +10,6 @@
   "scripts": {
     "test": "node node_modules/jasmine/bin/jasmine.js"
   },
-  "author": "",
+  "author": "Romer Chavez",
   "license": "ISC"
 }
