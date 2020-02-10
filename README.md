@@ -1,4 +1,4 @@
-## Automation trining
+## Automation training
 
 ### To run the test execute the following command:
 
