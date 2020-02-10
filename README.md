@@ -1,3 +1,5 @@
+## Automation trining
+
 ### Install dependencies
 ```
   npm install
