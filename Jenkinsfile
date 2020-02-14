@@ -12,8 +12,9 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
-                bat 'npm test'
+                dir('calculator') {
+                  bat 'npm test'
+                }
             }
         }
         stage('Reports') {
