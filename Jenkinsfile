@@ -5,7 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                bat 'cd calculator && npm install'
+                bat 'cd calculator'
+                bat 'npm install'
             }
         }
         stage('Test') {
